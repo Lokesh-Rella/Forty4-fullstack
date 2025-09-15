@@ -1,17 +1,19 @@
-const sqlite3 = require('sqlite3').verbose();
+// Use better-sqlite3 instead of sqlite3
+const Database = require("better-sqlite3");
 
-const db = new sqlite3.Database("users.db", (err) => {
-    if (err) {
-        console.error("Error opening database:", err.message);
-    } else {
-        console.log("Connected to SQLite database.");
-        db.run(`CREATE TABLE IF NOT EXISTS users (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name TEXT NOT NULL,
-            email TEXT UNIQUE NOT NULL,
-            role TEXT NOT NULL
-        )`);
-    }
-});
+// Open or create the database file
+const db = new Database("users.db");
+
+// Create table if it doesn’t exist
+db.prepare(`
+    CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT NOT NULL,
+        email TEXT UNIQUE NOT NULL,
+        role TEXT NOT NULL
+    )
+`).run();
+
+console.log("✅ Connected to SQLite database.");
 
 module.exports = db;

@@ -7,13 +7,13 @@ export default function UserList() {
     const [users, setUsers] = useState([]);
 
     const fetchUsers = () => {
-        axios.get("http://localhost:8080/api/users")
+        axios.get("https://forty4-fullstack-backend-5.onrender.com/api/users")
             .then(res => setUsers(res.data.data))
             .catch(err => console.error(err));
     };
 
     const deleteUser = (id) => {
-        axios.delete(`http://localhost:8080/api/users/${id}`)
+        axios.delete(`https://forty4-fullstack-backend-5.onrender.com/api/users/${id}`)
             .then(() => fetchUsers());
     };
 
