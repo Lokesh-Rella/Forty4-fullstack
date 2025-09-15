@@ -94,4 +94,3 @@ DELETE	/api/users/:id	Delete user
 https://github.com/Lokesh-Rella/Forty4-fullstack
 public: https://forty4-fullstack-frontend.vercel.app/
 
-✅ Deployed/hosted link (optional: Netlify/Vercel for frontend, Render/Heroku for backend)
